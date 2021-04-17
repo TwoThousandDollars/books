@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="books.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/books.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/form.css">
+    <link rel="stylesheet" href="styles/btn.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <title>Books</title>
+</head>
+<body>
+    <main>
+        <section id='book-form' class="form-container">
+            <div class="form--label-group">
+                <label class="form--label" for="book-title">Title: </label>
+                <input class="form--input-text" type="text"  id="book-title" required>
+            </div>
+            
+            <div class="form--label-group">
+                <label class="form--label" for="book-author">Author: </label>            
+                <input class="form--input-text" type="text"  id="book-author" required>
+            </div>
+            
+            <div class="form--label-group">
+                <label class="form--label" for="page-count">Page Count: </label>
+                <input class="form--input-text" type="text"  id="page-count" required>
+            </div>
+            
+            <div class="form--label-group">
+                <label class="form--label" for="read-status">Have you read this book?</label>
+                <label>
+                    <input value="true" class="form--input-radio" type="radio"  name="read-status" required>
+                    Yes
+                </label>
+                <label>
+                    <input value="false" class="form--input-radio" type="radio"  name="read-status" required>
+                    No
+                </label>
+            </div>
+            <button class="btn btn-primary">Submit Book</button>
+        </section>
+        <section id="book-list">
+            <ul id="book-list" class="book-list">
+                
+            </ul>
+        </section>
+    </main>
+    
+</body>
+</html>
