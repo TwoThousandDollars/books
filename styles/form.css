@@ -1,7 +1,7 @@
 .form-container {
     background: linear-gradient(360deg, #4c00bf, #4900c0, #4500c0, #4100c1, #3d00c1, #3800c2, #3400c2, #2e00c3);
     box-sizing: border-box;
-    border-radius: 0 25px 0 25px;
+    border-radius: 0 0 0 75px;
     display: flex;
     flex-direction: column;
     padding:20px 30px 40px 30px;
