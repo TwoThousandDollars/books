@@ -1,0 +1,46 @@
+.books--container {
+    background: linear-gradient(180deg, #f9f5ff, #f8f4ff, #f7f4ff, #f7f3ff, #f6f2ff, #f5f1ff, #f4f1ff, #f3f0ff);
+    height: 500px;
+    margin-top: -50px;
+    padding-top: 85px;;
+    width: 100%;
+}
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    margin: 0 15px;
+    padding: 15px;
+    box-shadow:
+        0 1.7px 8.3px rgba(0, 0, 0, 0.02),
+        0 4.2px 20px rgba(0, 0, 0, 0.028),
+        0 7.9px 37.6px rgba(0, 0, 0, 0.035),
+        0 14.1px 67px rgba(0, 0, 0, 0.042),
+        0 26.3px 125.3px rgba(0, 0, 0, 0.05),
+        0 63px 300px rgba(0, 0, 0, 0.07)
+    ;
+}
+
+.book-card--title {
+    font-weight: 900;
+    font-size: 1.25em;
+    color: #170030;
+}
+
+.book-card--top-row {
+    align-self: flex-start;
+    margin-bottom: 15px;
+}
+
+.book-card--author {
+    color: #373539;
+}
+.book-card--page-count {
+    color: #5D5D5D;
+}
+.book-card--read-status {
+
+}

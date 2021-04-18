@@ -6,9 +6,10 @@
     margin:auto;
     text-transform: uppercase;
     font-weight: 400;
+    word-spacing: 1px;
 }
 
 .btn-primary {
-    background-color: #FFC500;
+    background: linear-gradient(180deg, #ffee00, #ffe800, #ffe200, #ffdc00, #ffd600, #ffd100, #ffcb00, #ffc500);
     color: #003abf;
 }

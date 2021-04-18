@@ -4,9 +4,16 @@ body {
     display: flex;
     align-items: center;
     width: 100vw;
+    font-family: 'Open Sans', sans-serif;
 }
 
 main {
     width:100%;
     height:100%;
+}
+
+.hero {
+    font-weight: 900;
+    font-size: 2em;
+    letter-spacing: 1px;
 }

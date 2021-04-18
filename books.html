@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="books.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,900;1,300&family=Open+Sans+Condensed:wght@300;700&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/books.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/form.css">
@@ -16,6 +18,9 @@
 <body>
     <main>
         <section id='book-form' class="form-container">
+            <div class="hero">
+                Add a New Book to the Library: 
+            </div>
             <div class="form--label-group">
                 <label class="form--label" for="book-title">Title: </label>
                 <input class="form--input-text" type="text"  id="book-title" required>
@@ -33,21 +38,35 @@
             
             <div class="form--label-group">
                 <label class="form--label" for="read-status">Have you read this book?</label>
-                <label>
+                <label class="form--label-group-radio">
                     <input value="true" class="form--input-radio" type="radio"  name="read-status" required>
                     Yes
                 </label>
-                <label>
+                <label class="form--label-group-radio">
                     <input value="false" class="form--input-radio" type="radio"  name="read-status" required>
                     No
                 </label>
             </div>
-            <button class="btn btn-primary">Submit Book</button>
+            <button id="submit-button" class="btn btn-primary">Submit Book</button>
         </section>
-        <section id="book-list">
-            <ul id="book-list" class="book-list">
-                
-            </ul>
+        <section id="book-list" class="books--container">
+            <div data-book-id="1" class="book-card">
+                <div class="book-card--top-row">
+                    <div class="book-card--title">
+                        Corky's Life
+                    </div>
+                    <div class="book-card--author">
+                        By: Corky Inferno
+                    </div>
+                    <div class="book-card--page-count">123 Pages</div>
+                    <div class="book-card--read-status">Read</div>
+                </div>
+                <div class="book-card--bottom-row">
+                    <button class="btn">
+                        delete book
+                    </button>
+                </div>
+            </div>
         </section>
     </main>
     
