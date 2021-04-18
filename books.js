@@ -4,18 +4,19 @@ window.onload = () => {
     let bookButton = document.querySelector("#submit-button");
 
 
-    myLibrary.push(new Book("Shut up idiot", "Corky", 245, "true"));
-    myLibrary.push(new Book("My snake is extremely powerful", "Corky", 245, "true"));
-    myLibrary.push(new Book("Cool Book", "Corky", 245, "true"));
-    myLibrary.push(new Book("Sure", "Corky", 245, "true"));
+    myLibrary.push(new Book("Shut up idiot", "Corky", 245, "true", myLibrary.length));
+    myLibrary.push(new Book("My snake is extremely powerful", "Corky", 245, "true", myLibrary.length));
+    myLibrary.push(new Book("Cool Book", "Corky", 245, "flase", myLibrary.length));
+    myLibrary.push(new Book("Sure", "Corky", 245, "true", myLibrary.length));
 
     refreshBooksOnPage(myLibrary);
     
-    function Book(title, author, pageCount, readStatus) {
+    function Book(title, author, pageCount, readStatus, id) {
         this.title = title
         this.author = author
         this.pageCount = pageCount
         this.readStatus = readStatus
+        this.id = id
         this.info = () => {
             let pagePluralization = this.pageCount > 1 ? "pages" : "page";
             let readStatusPhrase = this.readStatus ? "read" : "not read yest"
@@ -35,7 +36,7 @@ window.onload = () => {
                 break;
             }
         }
-        myLibrary.push(new Book(bookTitle, bookAuthor, bookPageCount, bookReadStatus));
+        myLibrary.push(new Book(bookTitle, bookAuthor, bookPageCount, bookReadStatus, myLibrary.length));
         refreshBooksOnPage(myLibrary);
         clearForm();
     });
@@ -52,11 +53,12 @@ window.onload = () => {
     }
     
     function refreshBooksOnPage(library) {
+        resetBookIds(library);
         let bookSection = document.querySelector('#book-list');
         clearBooksOnPage(bookSection);
         // console.log(library);
         for (let i = 0; i < library.length; i++) {
-            let newBookCard = generateBookComponent(library[i], i);
+            let newBookCard = generateBookComponent(library[i]);
             bookSection.appendChild(newBookCard);
         };
     }
@@ -67,63 +69,97 @@ window.onload = () => {
         }
     }
 
-    function generateBookComponent(book, id) {
+    function resetBookIds(library) {
+        for (let i = 0; i < library.length; i++) {
+            library[i].id = i;
+        }
+    }
+
+    function generateBookComponent(book) {
         // Create the card that will contain all info for a book
         let bookCard = document.createElement('div');
-        bookCard.className = 'book-card'
-        bookCard.setAttribute('data-boook-id', id);
+            bookCard.className = 'book-card'
+            bookCard.setAttribute('data-boook-id', book.id);
 
-        // Create the top row container
-        let bookCardTopRow = document.createElement('div');
-        bookCardTopRow.className = 'book-card--top-row';
+            // Create the top row container
+            let bookCardTopRow = document.createElement('div');
+                bookCardTopRow.className = 'book-card--top-row';
 
-        // Create title element
-        let bookCardTitle = document.createElement('div');
-        bookCardTitle.className = 'book-card--title';
-        bookCardTitle.textContent = book.title;
+                // Create title element
+                let bookCardTitle = document.createElement('div');
+                    bookCardTitle.className = 'book-card--title';
+                    bookCardTitle.textContent = book.title;
 
-        // Create author element
-        let bookCardAuthor = document.createElement('div');
-        bookCardAuthor.className = 'book-card--author';
-        bookCardAuthor.textContent = 'By: ' + book.author;
+                // Create author element
+                let bookCardAuthor = document.createElement('div');
+                    bookCardAuthor.className = 'book-card--author';
+                    bookCardAuthor.textContent = 'By: ' + book.author;
 
-        // Create page count element
-        let bookCardPageCount = document.createElement('div');
-        bookCardPageCount.className = 'book-card--page-count';
-        bookCardPageCount.textContent = book.pageCount + ' page(s)';
+                // Create page count element
+                let bookCardPageCount = document.createElement('div');
+                    bookCardPageCount.className = 'book-card--page-count';
+                    let pagePluralization = Number(book.pageCount) > 1 ? "pages" : "page";
+                    bookCardPageCount.textContent = book.pageCount + ' ' + pagePluralization;
 
-        // Create read status element
-        let bookCardReadStatus = document.createElement('div');
-        bookCardReadStatus.className = 'book-card--page-count';
-        bookCardReadStatus.textContent = book.readStatus === 'true' ? 'Read' : "Unread";
+                // Create read status element
+                let bookCardReadStatus = document.createElement('div');
+                    bookCardReadStatus.className = 'book-card--read-status';
+                    
+                    let read = document.createElement('span');
+                        read.textContent = "Read";
+                        read.className = 'status';
+                    
+                    let unread = document.createElement('span');
+                        unread.textContent = "Unread";
+                        unread.className = 'status';
 
-        // Append book elements to top row
-        bookCardTopRow.appendChild(bookCardTitle);
-        bookCardTopRow.appendChild(bookCardAuthor);
-        bookCardTopRow.appendChild(bookCardPageCount);
-        bookCardTopRow.appendChild(bookCardReadStatus);
+                    if (book.readStatus === 'true') { 
+                        read.classList.add('status--selected');
+                        unread.addEventListener('click', () => {
+                            book.readStatus = 'false';
+                            refreshBooksOnPage(myLibrary);
+                        });
+                    }
+                    else { 
+                        unread.classList.add('status--selected');
+                        read.addEventListener('click', () => {
+                            book.readStatus = 'true';
+                            refreshBooksOnPage(myLibrary);
+                        });
+                    }
 
-        // Append top row to book card 
-        bookCard.appendChild(bookCardTopRow);
+                    // append spans to top row 
+                    bookCardReadStatus.appendChild(read);
+                    bookCardReadStatus.appendChild(unread);
 
-        // Create bottom row
-        let bookCardBottomRow = document.createElement('div');
-        bookCardBottomRow.className = 'book-card--bottom-row';
+                    
+                    // Create bottom row
+                    let bookCardBottomRow = document.createElement('div');
+                    bookCardBottomRow.className = 'book-card--bottom-row';
+                    
+                    // Create delete button
+                    let bookCardButton = document.createElement('button');
+                    bookCardButton.className = 'btn';
+                    bookCardButton.textContent = 'delete book';
+                    bookCardButton.addEventListener("click", () => {
+                        if (book.id > -1) { myLibrary.splice(book.id, 1) };
+                        refreshBooksOnPage(myLibrary);
+                    }); 
+                    
+            // Append book elements to top row
+            bookCardTopRow.appendChild(bookCardTitle);
+            bookCardTopRow.appendChild(bookCardAuthor);
+            bookCardTopRow.appendChild(bookCardPageCount);
+            bookCardTopRow.appendChild(bookCardReadStatus);
 
-        // Create delete button
-        let bookCardButton = document.createElement('button');
-        bookCardButton.className = 'btn';
-        bookCardButton.textContent = 'delete book';
-        bookCardButton.addEventListener("click", () => {
-            if (id > -1) { myLibrary.splice(id, 1) };
-            refreshBooksOnPage(myLibrary);
-        })
+            // Append top row to book card 
+            bookCard.appendChild(bookCardTopRow);
 
-        // Append button to bottom row 
-        bookCardBottomRow.appendChild(bookCardButton);
+            // Append button to bottom row 
+            bookCardBottomRow.appendChild(bookCardButton);
 
-        // Append bottom row to book card 
-        bookCard.appendChild(bookCardBottomRow);
+            // Append bottom row to book card 
+            bookCard.appendChild(bookCardBottomRow);
 
         return bookCard;
     }

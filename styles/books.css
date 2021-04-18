@@ -29,6 +29,7 @@
     font-weight: 900;
     font-size: 1.25em;
     color: #170030;
+    margin-bottom: 5px;
 }
 
 .book-card--top-row {
@@ -41,9 +42,31 @@
 }
 .book-card--page-count {
     color: #5D5D5D;
+    margin-bottom: 5px;
 }
 .book-card--read-status {
 
+}
+
+.status {
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    color:lightgray;
+    margin-right: 5px;
+    padding: 2px;
+}
+
+.status:hover {
+    cursor: pointer;
+}
+
+.status--selected {
+    color: #4c00bf;
+    border-color: #4c00bf;
+}
+
+.status--selected:hover {
+    cursor: default;
 }
 
 /* book card component = {
