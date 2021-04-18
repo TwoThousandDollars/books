@@ -2,6 +2,14 @@ window.onload = () => {
     let myLibrary = [];
     let bookList = document.querySelector("#book-list");
     let bookButton = document.querySelector("#submit-button");
+
+
+    myLibrary.push(new Book("Shut up idiot", "Corky", 245, "true"));
+    myLibrary.push(new Book("My snake is extremely powerful", "Corky", 245, "true"));
+    myLibrary.push(new Book("Cool Book", "Corky", 245, "true"));
+    myLibrary.push(new Book("Sure", "Corky", 245, "true"));
+
+    refreshBooksOnPage(myLibrary);
     
     function Book(title, author, pageCount, readStatus) {
         this.title = title
@@ -46,6 +54,7 @@ window.onload = () => {
     function refreshBooksOnPage(library) {
         let bookSection = document.querySelector('#book-list');
         clearBooksOnPage(bookSection);
+        // console.log(library);
         for (let i = 0; i < library.length; i++) {
             let newBookCard = generateBookComponent(library[i], i);
             bookSection.appendChild(newBookCard);
@@ -105,6 +114,10 @@ window.onload = () => {
         let bookCardButton = document.createElement('button');
         bookCardButton.className = 'btn';
         bookCardButton.textContent = 'delete book';
+        bookCardButton.addEventListener("click", () => {
+            if (id > -1) { myLibrary.splice(id, 1) };
+            refreshBooksOnPage(myLibrary);
+        })
 
         // Append button to bottom row 
         bookCardBottomRow.appendChild(bookCardButton);
