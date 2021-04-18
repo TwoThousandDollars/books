@@ -1,13 +1,7 @@
 window.onload = () => {
-    let myLibrary = [];
+    let myLibrary = []
     let bookList = document.querySelector("#book-list");
     let bookButton = document.querySelector("#submit-button");
-
-
-    myLibrary.push(new Book("Shut up idiot", "Corky", 245, "true", myLibrary.length));
-    myLibrary.push(new Book("My snake is extremely powerful", "Corky", 245, "true", myLibrary.length));
-    myLibrary.push(new Book("Cool Book", "Corky", 245, "flase", myLibrary.length));
-    myLibrary.push(new Book("Sure", "Corky", 245, "true", myLibrary.length));
 
     refreshBooksOnPage(myLibrary);
     
