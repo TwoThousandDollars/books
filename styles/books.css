@@ -1,5 +1,5 @@
 .books--container {
-    background: linear-gradient(180deg, #f9f5ff, #f8f4ff, #f7f4ff, #f7f3ff, #f6f2ff, #f5f1ff, #f4f1ff, #f3f0ff);
+    /* background: linear-gradient(180deg, #f9f5ff, #f8f4ff, #f7f4ff, #f7f3ff, #f6f2ff, #f5f1ff, #f4f1ff, #f3f0ff); */
     height: 500px;
     margin-top: -50px;
     padding-top: 85px;;
@@ -12,7 +12,8 @@
     align-items: center;
     background-color: white;
     border-radius: 5px;
-    margin: 0 15px;
+    margin: 15px;
+    margin-top: 0;
     padding: 15px;
     box-shadow:
         0 1.7px 8.3px rgba(0, 0, 0, 0.02),
@@ -44,3 +45,14 @@
 .book-card--read-status {
 
 }
+
+/* book card component = {
+    div.class='book-card' data-book-id=arrayindex
+        div.class='book-card--top-row'
+            div.class=book-card--title
+            div.class=book-card--author
+            div.class=book-card--page-count
+            div.class=book-card--read-status
+        div.class='book-card--bottom-row'
+            div.class=btn
+} */
