@@ -31,6 +31,7 @@
     border-bottom: 1px solid #F6F9FF;
     border-radius: 1px;
     background-color: transparent;
+    font-size:16px;
 }
 
 .form--input-text:focus {
